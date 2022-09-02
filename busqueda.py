@@ -26,7 +26,7 @@ class laberinto:
         self.distancia=None
 
     def es_final(self):
-        return self.estado_actual in self.estado_final}
+        return self.estado_actual in self.estado_final
     
     def set_distancia(self, d):
         self.distancia = d
@@ -129,8 +129,7 @@ class laberinto:
                 if not self.esta_historial(estado_temporal) and not estado_temporal.get_valor() == "illegal":
                     self.agregar(estado_temporal)
 
-            print("\nElementos en Historial: " + str(len(self.historial)))
-            print("\nElementos en Cola: " + str(len(self.cola)))
+            print("\nElementos en Historial: " + str(len(self.historial)) + "\n\nElementos en Cola: " + str(len(self.cola)))
             self.estado_actual = self.cola.popleft()
             iteracion += 1
         print("Iteracion: " + str(iteracion) + "\n")
@@ -138,9 +137,7 @@ class laberinto:
         print("\n\n\nHa llegado a Solucion")
         self.buscar_padres(self.estado_actual)
         print("\nALGORITMO EN ANCHURA:")
-        print("\nElementos descubiertos: " + str(len(self.historial)))
-        print("\nElementos en Cola: " + str(len(self.cola)))
-        print("\nIteraciones: " + str(iteracion))
+        print("\nElementos en Historial: " + str(len(self.historial)) + "\n\nElementos en Cola: " + str(len(self.cola)) + "\n\n Iteraciones: " + str(iteracion))
 
     def add_profundidad(self, pila_sucesores):
         while pila_sucesores.__len__() > 0:
@@ -165,8 +162,7 @@ class laberinto:
             
             self.add_profundidad(sucesores) 
 
-            print("\nElementos en Historial" + str(len(self.historial)))
-            print("\nElementos en Cola: " + str(len(self.cola)))
+            print("\nElementos en Historial: " + str(len(self.historial)) + "\n\nElementos en Cola: " + str(len(self.cola)))
 
             self.estado_actual = self.cola.popleft()
             iteracion += 1
@@ -176,9 +172,7 @@ class laberinto:
         print("\n\n\nHa llegado a Solucion")
         self.buscar_padres(self.estado_actual)
         print("\nALGORITMO EN PROFUNDIDAD:")
-        print("\nElementos en Historial: " + str(len(self.historial)))
-        print("\nElementos en Cola Estados: " + str(len(self.cola)))
-        print("\nCantidad de Iteraciones: " + str(iteracion))
+        print("\nElementos en Historial: " + str(len(self.historial)) + "\n\nElementos en Cola: " + str(len(self.cola)) + "\n\n Iteraciones: " + str(iteracion))
 
     def algoritmo_anchura_evalua_hijos(self):
         iteracion = 1
@@ -198,8 +192,7 @@ class laberinto:
                     if estado_temporal in self.estado_final:
                         break
                 
-            print("\nElementos en Historial" + str(len(self.historial)))
-            print("\nElementos en Cola: " + str(len(self.cola)))
+            print("\nElementos en Historial: " + str(len(self.historial)) + "\n\nElementos en Cola: " + str(len(self.cola)))
 
             self.estado_actual = self.cola.popleft()
             iteracion += 1
@@ -209,9 +202,7 @@ class laberinto:
         print("\n\n\nHa llegado a Solucion")
         self.buscar_padres(self.estado_actual)
         print("\nALGORITMO EN ANCHURA:")
-        print("\nElementos descubiertos: " + str(len(self.historial)))
-        print("\nElementos en Cola: " + str(len(self.cola)))
-        print("\nIteraciones: " + str(iteracion))
+        print("\nElementos en Historial: " + str(len(self.historial)) + "\n\nElementos en Cola: " + str(len(self.cola)) + "\n\n Iteraciones: " + str(iteracion))
 
     def algoritmo_profundidad_evalua_hijos(self):
         iteracion = 1
@@ -236,8 +227,7 @@ class laberinto:
                 
             self.add_profundidad(sucesores)
                 
-            print("\nElementos en Historial" + str(len(self.historial)))
-            print("\nElementos en Cola: " + str(len(self.cola)))
+            print("\nElementos en Historial: " + str(len(self.historial)) + "\n\nElementos en Cola: " + str(len(self.cola)))
 
             #Paso al siguiente estado
             if solucion is None:
@@ -251,6 +241,4 @@ class laberinto:
         print("\n\n\nHa llegado a Solucion")
         self.buscar_padres(self.estado_actual)
         print("\nALGORITMO EN PROFUNDIDAD:")
-        print("\nElementos en Historial: " + str(len(self.historial)))
-        print("\nElementos en Cola Estados: " + str(len(self.cola)))
-        print("\nCantidad de Iteraciones: " + str(iteracion))
+        print("\nElementos en Historial: " + str(len(self.historial)) + "\n\nElementos en Cola: " + str(len(self.cola)) + "\n\n Iteraciones: " + str(iteracion))
