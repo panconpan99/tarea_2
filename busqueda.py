@@ -27,6 +27,7 @@ class laberinto:
         self.cola=deque()
         self.lab=mapa
         self.solucion=[]
+    
     def es_final(self):
         return self.estado_actual in self.estado_final
     
@@ -243,14 +244,20 @@ class laberinto:
         d=math.fabs((final.get_valor()[0]-estado.get_valor()[0])+(final.get_valor()[1]-estado.get_valor()[1]))
         return d
 
+    def espacios_euclideano(self,estado,final):
+        d=math.sqrt(math.pow(final.get_valor()[0]-estado.get_valor()[0],2)+math.pow(final.get_valor()[1]-estado.get_valor()[1],2))
+        return d
+
     def calcular_heuristica(self, estado):
         primero = True
         for final in self.estado_final:
             if primero:
                 distancia = self.espacios_manhattan(estado, final)
+                #distancia = self.espacios_euclideano(estado, final)
                 primero = False
             else:
                 nueva_distancia = self.espacios_manhattan(estado, final)
+                #nueva_distancia = self.espacios_euclideano(estado, final)
 
                 if nueva_distancia < distancia:
                     distancia = nueva_distancia
@@ -264,7 +271,7 @@ class laberinto:
         #movimientos = ["DOWN", "RIGHT", "UP", "LEFT"]
         #movimientos = ["DOWN","UP", "RIGHT","LEFT"]
 
-        sucesores = []
+        sucesores = deque()
         solucion = None
 
         while not self.es_final():
