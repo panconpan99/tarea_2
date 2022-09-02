@@ -23,10 +23,16 @@ class laberinto:
         self.cola=deque()
         self.lab=mapa
         self.solucion=[]
+        self.distancia=None
 
     def es_final(self):
-        return self.estado_actual in self.estado_final
+        return self.estado_actual in self.estado_final}
+    
+    def set_distancia(self, d):
+        self.distancia = d
 
+    def get_distancia(self):
+        return self.distancia
 
     def agregar(self, e):
         self.cola.append(e)
