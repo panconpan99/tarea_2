@@ -138,7 +138,7 @@ class laberinto:
 
     def add_profundidad(self, pila_sucesores):
         while pila_sucesores.__len__() > 0:
-            e = pila_sucesores.popleft()
+            e = pila_sucesores.pop()
             self.historial.append(e)
             self.cola.appendleft(e)
     
@@ -252,12 +252,12 @@ class laberinto:
         primero = True
         for final in self.estado_final:
             if primero:
-                distancia = self.espacios_manhattan(estado, final)
-                #distancia = self.espacios_euclideano(estado, final)
+                #distancia = self.espacios_manhattan(estado, final)
+                distancia = self.espacios_euclideano(estado, final)
                 primero = False
             else:
-                nueva_distancia = self.espacios_manhattan(estado, final)
-                #nueva_distancia = self.espacios_euclideano(estado, final)
+                #nueva_distancia = self.espacios_manhattan(estado, final)
+                nueva_distancia = self.espacios_euclideano(estado, final)
 
                 if nueva_distancia < distancia:
                     distancia = nueva_distancia
@@ -271,7 +271,7 @@ class laberinto:
         #movimientos = ["DOWN", "RIGHT", "UP", "LEFT"]
         #movimientos = ["DOWN","UP", "RIGHT","LEFT"]
 
-        sucesores = deque()
+        sucesores =[]
         solucion = None
 
         while not self.es_final():
